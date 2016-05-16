@@ -1,0 +1,24 @@
+root { 
+    display: block;
+}
+body
+{
+background-image:url('');
+background-repeat:no-repeat;
+background-color:#f4f4f2; 
+
+}
+
+div,p
+{
+    font-family:"Arial",Helvetica,sans-ser;
+}
+
+.pan
+{
+top:400px;
+left:800px;
+width:100px;
+height:100px;
+position:absolute;
+}
