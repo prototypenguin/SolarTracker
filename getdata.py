@@ -45,4 +45,4 @@ class talk(object):
 
         ser.write(char)
         
-        return val
+        return char
