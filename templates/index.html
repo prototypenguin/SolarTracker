@@ -1,0 +1,111 @@
+$def with (paref, co, diff, p1res, p2res, pos)
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../static/style.css">
+<script src="../static/Chart/Chart.js"></script>
+<title>Title</title>
+</head>
+<body>
+
+<img class="pan" id="img1" src="../static/line.png" alt="cog1">
+
+    Status: $co  -- ArduinoTEST -- $p1res -- -- $p2res -- --$diff-- --$pos--
+
+<p>Photoresistences</p>
+<div style="width:40%">
+			<div>
+				<canvas id="myChart" width="600" height="400"></canvas>
+			</div>
+		</div>
+<script>
+
+setTimeout(function(){
+   window.location.reload(1);
+}, $paref);
+
+var data = {
+    labels: ["1h", "2h", "3h", "4h", "5h", "6h", "7h", "8h", "9h","10h", "12h", "13h"],
+    datasets: [
+        {
+            label: "PhotoRes1",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(25, 209, 25, 1)",
+            pointColor: "rgba(25, 209, 25, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: $p1res
+        },
+        {
+            label: "PhotoRes2",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(80, 198, 225, 1)",
+            pointColor: "rgba(80, 198, 225, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: $p2res
+        },
+       
+    ]
+};
+
+var data1 = {
+    labels: ["1h", "2h", "3h", "4h", "5h", "6h", "7h", "8h", "9h","10h", "12h", "13h"],
+    datasets: [
+        {
+            label: "Aujourd'hui",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(25, 209, 25, 1)",
+            pointColor: "rgba(25, 209, 25, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: $diff
+        },
+        {
+            label: "Hier",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(80, 198, 225, 1)",
+            pointColor: "rgba(80, 198, 225, 1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: []
+        },
+       
+       
+    ]
+};
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).Line(data);
+
+rotateAnimation("img1",30);
+
+var looper;
+var degrees = 0;
+function rotateAnimation(el,speed){
+	var elem = document.getElementById(el);
+	if(navigator.userAgent.match("Chrome")){
+		elem.style.WebkitTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Firefox")){
+		elem.style.MozTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("MSIE")){
+		elem.style.msTransform = "rotate("+degrees+"deg)";
+	} else if(navigator.userAgent.match("Opera")){
+		elem.style.OTransform = "rotate("+degrees+"deg)";
+	} else {
+		elem.style.transform = "rotate("+degrees+"deg)";
+	}
+	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+	degrees = $pos
+	if(degrees > 359){
+		degrees = 1;
+	}
+	document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
+}
+</script>
+</body>
+</html>
