@@ -4,20 +4,19 @@ $def with (paref, co, diff, p1res, p2res, pos)
 <head>
 <link rel="stylesheet" type="text/css" href="../static/style.css">
 <script src="../static/Chart/Chart.js"></script>
-<title>Title</title>
+<title>SolarTracker</title>
 </head>
 <body>
 
 <img class="pan" id="img1" src="../static/line.png" alt="cog1">
 
-    Status: $co  -- ArduinoTEST -- $p1res -- -- $p2res -- --$diff-- --$pos--
+    Status: $co
 
 <p>Photoresistences</p>
-<div style="width:40%">
-			<div>
-				<canvas id="myChart" width="600" height="400"></canvas>
-			</div>
-		</div>
+
+<div width="600" height="400">
+	<canvas id="myChart" width="600" height="400"></canvas>
+</div>
 <script>
 
 setTimeout(function(){
@@ -47,34 +46,6 @@ var data = {
             pointHighlightStroke: "rgba(220,220,220,1)",
             data: $p2res
         },
-       
-    ]
-};
-
-var data1 = {
-    labels: ["1h", "2h", "3h", "4h", "5h", "6h", "7h", "8h", "9h","10h", "12h", "13h"],
-    datasets: [
-        {
-            label: "Aujourd'hui",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(25, 209, 25, 1)",
-            pointColor: "rgba(25, 209, 25, 1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: $diff
-        },
-        {
-            label: "Hier",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(80, 198, 225, 1)",
-            pointColor: "rgba(80, 198, 225, 1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: []
-        },
-       
        
     ]
 };
