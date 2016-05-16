@@ -27,14 +27,14 @@ class listes(object):
 
 class talk(object):
     
-    def getintval(self, char):
+    def get_int_val(self, char):
 
         ser.write(char)
         val = int(ser.readline())
         
         return val
     
-    def getstrval(self, char):
+    def get_str_val(self, char):
 
         ser.write(char)
         val = ser.readline()
